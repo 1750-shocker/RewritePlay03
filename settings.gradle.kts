@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "RewritePlay03"
 include(":app")
- 
+include(":core")
+include(":model")
+include(":network")
