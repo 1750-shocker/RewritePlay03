@@ -33,7 +33,11 @@ android {
 }
 
 dependencies {
-
+    api(libs.refresh.layout.kernel) // 核心必须依赖
+    api(libs.refresh.header.classics) // 经典刷新头
+    api(libs.refresh.footer.classics) // 经典加载
+    api(libs.lottie)
+    implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
