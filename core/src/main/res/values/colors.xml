@@ -17,6 +17,7 @@
     <color name="refresh">#F8F8F8</color>
     <!--取消按钮-->
     <color name="red_btn_bg_color">#DD6B55</color>
+    <color name="icon_normal">#D1D1D1</color>
 
     <!-- 灰白 -->
     <color name="grayWhite">#e9e5e5</color>
