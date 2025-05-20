@@ -5,10 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.gta.core.view.custom.floating.FloatingMenu
 import com.gta.rewriteplay03.R
-import com.gta.rewriteplay03.databinding.LayoutHomeBottomLandTabBinding
 import com.gta.rewriteplay03.databinding.LayoutHomeBottomTabBinding
 
 

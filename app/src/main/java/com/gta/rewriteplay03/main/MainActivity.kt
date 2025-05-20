@@ -7,14 +7,9 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.gta.core.util.showToast
 import com.gta.core.view.base.BaseActivity
-import com.gta.rewriteplay03.R
 import com.gta.rewriteplay03.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.system.exitProcess
@@ -25,7 +20,7 @@ class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel>()
-    var isPort = true
+    private var isPort = true
 
     override fun initView() {
         isPort = resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT

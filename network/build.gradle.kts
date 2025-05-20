@@ -35,7 +35,8 @@ android {
 dependencies {
     implementation(project(":model"))
     implementation(project(":core"))
-
+    api(libs.retrofit)
+    api(libs.retrofit.converter.gson)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
