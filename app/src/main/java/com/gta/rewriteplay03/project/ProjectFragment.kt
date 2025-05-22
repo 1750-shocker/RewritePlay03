@@ -40,10 +40,12 @@ class ProjectFragment() : BaseFragment<ProjectViewModel, FragmentProjectBinding>
         setDataStatus(viewModel.dataLiveData) {
             val nameList = mutableListOf<String>()
             val viewList = mutableListOf<Fragment>()
+            //获取项目列表数据，并通过project.id去新建对应的ListFragment
             it.forEach { project ->
                 nameList.add(project.name)
                 viewList.add(ProjectListFragment.newInstance(project.id))
             }
+            //将数据源交给适配器
             adapter.apply {
                 reset(nameList.toTypedArray())
                 reset(viewList)
@@ -62,7 +64,12 @@ class ProjectFragment() : BaseFragment<ProjectViewModel, FragmentProjectBinding>
                 tab.text = adapter.title(position)
             }.attach()
             mediaSourceBar.setPadding(0, context.getStatusBarHeight(), 0, 0)
+            mediaSourceBar.setOnClickListener{
+                //TODO：切换播放源
+            }
         }
+        //由于我们在这个页面添加了MediaSourceBar，我们要给他数据，就要在这里把数据源设置到databinding中
+//        TODO：dataBinding.serviceInfo = xxx,其中serviceInfo是databinding中的一个变量
     }
 
     override fun onTabSelected(tab: TabLayout.Tab?) {

@@ -9,6 +9,7 @@ import com.gta.network.base.PlayAndroidNetwork
 import com.gta.rewriteplay03.base.liveDataFire
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.flow.first
+import tech.jidouauto.library.logger.Logger
 import javax.inject.Inject
 
 
@@ -42,6 +43,7 @@ class ProjectRepository @Inject constructor(private val application: Application
      * @param query 查询类
      */
     fun getProject(query: QueryArticle) = liveDataFire {
+        Logger.info("current query is ${query.cid}&${query.page}&${query.isRefresh}")
         if (query.page == 1) {
             val dataStore = DataStoreUtils
             val articleListForChapterId =

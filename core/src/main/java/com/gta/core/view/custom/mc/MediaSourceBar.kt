@@ -89,7 +89,7 @@ class MediaSourceBar(
         binding.mediaSourceIcon.setImageResource(resId)
     }
 
-    fun setMediaSourceTitle(name: String) {
+    fun setMediaSourceName(name: String) {
         binding.mediaSourceTitle.text = name
     }
 

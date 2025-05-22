@@ -10,7 +10,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-
+import jp.wasabeef.glide.transformations.BuildConfig
+import tech.jidouauto.library.logger.BaseLog
+import tech.jidouauto.library.logger.Logger
+import tech.jidouauto.library.logger.LoggerManager
 
 @HiltAndroidApp
 class App : Application() {
@@ -18,6 +21,10 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         Play.initialize(applicationContext)
+        LoggerManager.enableLog(true)
+            .logLevel(BaseLog.LEVEL_INFO)
+            .setGlobalTag("MediaCenter")
+            .setMessagePrefix("JDO")
 //        initData()
     }
 

@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="serviceInfo"
+            type="com.gta.model.model.ServiceBean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,9 +20,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:media_source_name="@string/MediaSourceBar_title_text" />
+            app:media_source_name="@{serviceInfo.name}"
+            app:media_source_icon="@{serviceInfo.icon}" />
 
-        <com.google.android.material.tabs.TabLayout
+        <tech.jidouauto.component.widgets.tab.TabLayout
             android:id="@+id/projectTabLayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_75"

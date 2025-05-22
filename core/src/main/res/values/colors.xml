@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="black">#FF000000</color>
     <color name="color_FFFFFF_5">#0DFFFFFF</color>
     <color name="color_FFFFFF_10">#1AFFFFFF</color>
@@ -13,6 +14,7 @@
     <color name="colorPrimaryDark">#25C84C</color>
     <color name="colorAccent">#41DF67</color>
     <color name="colorLoading">#41DF67</color>
+    <color name="improper_image_refs_tint_color">#C8FF0000</color>
     <!-- 白色 -->
     <color name="white">#ffffff</color>
     <!-- 浅白色 -->

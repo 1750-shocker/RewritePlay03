@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="custom_media_packages" translatable="false">
+        <item>com.android.car.radio/com.android.car.radio.service.RadioAppService</item>
+        <item>com.jidouauto.media/com.jidouauto.media.kuwo.KuwoBrowserService</item>
+        <item>com.jidouauto.media/com.jidouauto.media.leting.LetingBrowserService</item>
+        <item>com.jidouauto.media/com.jidouauto.media.iqiyi.IqiyiBrowserService</item>
+        <item>com.jidouauto.media/com.jidouauto.media.ximalaya.XimalayaBrowserService</item>
+        <item>com.android.car.radio/com.android.car.radio.service.RadioAppService</item>
+        <item>com.bytedance.byteautoservice/com.bytedance.auto.lite20.uishell.play.core.MediaService</item>
+        <item>com.huawei.movie.car/com.huawei.hvi.ability.component.media.VideoMediaBrowserService</item>
+        <item>com.huawei.music.car/com.android.mediacenter.localmusic.MediaPlaybackService</item>
+        <item>com.ifeng.ecarxfm/com.ifeng.ecarxfm.service.FmMusicService</item>
+        <item>com.iflyrec.tingshuo/com.iflyrec.tingshuo.jdo.MediaBrowserService</item>
+        <item>com.lazyaudio.yayagushi/tingshu.bubei.mediasupport.service.MediaSessionBrowserService</item>
+        <item>com.lizhi.smartlife.lzbk.car/com.lizhi.smartlife.lizhicar.service.LiZhiCarMediaService</item>
+        <item>com.renben.pandatv/com.renben.pandatv.player.audioservice.FmMusicService</item>
+        <item>de.eso.radio/de.eso.radio.headless.mediabrowser.RadioBrowserService</item>
+        <item>de.eso.siriusxm/de.esolutions.sxm.client.media.browser.MediaBrowserService</item>
+
+    </string-array>
+    <string name="config_crop_icon_mask" translatable="false">
+        M0,50 a50,50 0 1,0 100,0 a50,50 0 1,0 -100,0
+    </string>
+    <bool name="flag_improper_image_references">false</bool>
+</resources>
