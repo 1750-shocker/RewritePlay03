@@ -14,7 +14,8 @@ import com.gta.model.room.entity.ProjectClassify
 
 @Database(
     entities = [ProjectClassify::class, Article::class],
-    version = 2
+    version = 2,
+    exportSchema = false
 )
 abstract class PlayDatabase : RoomDatabase() {
 

@@ -13,9 +13,19 @@ pluginManagement {
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    val MAVENUSER = providers.gradleProperty( "MAVENUSER")
+    val MAVENPASSWORD = providers.gradleProperty("MAVENPASSWORD")
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("http://172.16.15.158:8081/artifactory/list/gradle-release/")
+            isAllowInsecureProtocol = true
+            credentials {
+                username = MAVENUSER.get()
+                password = MAVENPASSWORD.get()
+            }
+        }
     }
 }
 

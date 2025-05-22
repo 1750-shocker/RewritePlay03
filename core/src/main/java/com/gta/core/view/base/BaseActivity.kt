@@ -10,7 +10,10 @@ import android.widget.FrameLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.viewbinding.ViewBinding
 import com.gta.core.R
 import com.gta.core.util.AndroidVersion
 import com.gta.core.util.showToast
@@ -22,8 +25,10 @@ import java.lang.ref.WeakReference
 
 
 @SuppressLint("Registered")
-abstract class BaseActivity : AppCompatActivity(), ILce, BaseActivityInit {
-
+abstract class BaseActivity<T: ViewModel, V: ViewBinding> : AppCompatActivity(), ILce, BaseActivityInit {
+    abstract val viewModel: T
+    abstract val layoutId: Int
+    lateinit var dataBinding: V
     /**
      * Activity中显示加载等待的控件。
      */
@@ -50,6 +55,7 @@ abstract class BaseActivity : AppCompatActivity(), ILce, BaseActivityInit {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        dataBinding = DataBindingUtil.setContentView(this, layoutId)
         //沉浸式状态栏配置，使用了工具类判断当前系统版本
         if (!AndroidVersion.hasV()) {
             transparentStatusBar()

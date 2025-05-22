@@ -10,24 +10,28 @@ import android.view.View
 import androidx.activity.viewModels
 import com.gta.core.util.showToast
 import com.gta.core.view.base.BaseActivity
+import com.gta.rewriteplay03.R
 import com.gta.rewriteplay03.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.system.exitProcess
 
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
+    override val viewModel: MainViewModel by viewModels()
+    override val layoutId = R.layout.activity_main
 
-    private lateinit var binding: ActivityMainBinding
-    private val viewModel by viewModels<MainViewModel>()
+//    private lateinit var binding: ActivityMainBinding
+//    private val viewModel by viewModels<MainViewModel>()
     private var isPort = true
 
     override fun initView() {
         isPort = resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
-        when (isPort) {
-            true -> binding.homeView?.init(supportFragmentManager, viewModel)
-            false -> binding.homeLandView?.init(supportFragmentManager, viewModel)
-        }
+//        when (isPort) {
+//            true -> dataBinding.homeView?.init(supportFragmentManager, viewModel)
+//            false -> dataBinding.homeLandView?.init(supportFragmentManager, viewModel)
+//        }
+        dataBinding.homeView.init(supportFragmentManager, viewModel)
     }
 
     @SuppressLint("MissingSuperCall")
@@ -36,8 +40,8 @@ class MainActivity : BaseActivity() {
     }
 
     override fun getLayoutView(): View {
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        return binding.root
+//        dataBinding = ActivityMainBinding.inflate(layoutInflater)
+        return dataBinding.root
     }
 
     private var exitTime: Long = 0

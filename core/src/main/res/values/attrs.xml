@@ -19,5 +19,13 @@
             <enum name="right" value="3" />
         </attr>
     </declare-styleable>
+    <attr name="mediaSourceBarStyle" format="reference" />
+    <declare-styleable name="MediaSourceBar">
+        <attr name="media_source_backgroundColor" format="reference|color" />
+        <attr name="media_source_icon" format="reference|string" />
+        <attr name="media_source_name" format="reference|string" />
+        <attr name="media_source_name_color" format="reference|color" />
+        <attr name="media_source_name_size" format="reference|dimension" />
+    </declare-styleable>
 
 </resources>

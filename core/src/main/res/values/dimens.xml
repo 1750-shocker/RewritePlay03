@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="media_source_bar_icon_size">30dp</dimen>
+    <dimen name="media_source_bar_margin_horizontal">8dp</dimen>
+    <dimen name="media_source_bar_margin_Vertical">8dp</dimen>
+    <dimen name="media_source_bar_arrow_down_width">10dp</dimen>
+    <dimen name="media_source_bar_arrow_down_height">5dp</dimen>
     <dimen name="lce_content_view_animation_translate_y">40dp</dimen>
     <!-- dp and sp values, must be defind in this file! -->
     <!-- view size,you can add if there is no one -->

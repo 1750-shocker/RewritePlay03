@@ -2,7 +2,7 @@
 <resources>
     <string name="bad_network_view_tip">Your network is not to force, can tap the screen to reload</string>
     <string name="failed_load_data">Failed to load data</string>
-
+    <string name="MediaSourceBar_title_text" translatable="false">网易云音乐</string>
     <string name="app_name">PlayAndroid</string>
     <string name="no_network">network unusable</string>
     <string name="exit_program">press again</string>

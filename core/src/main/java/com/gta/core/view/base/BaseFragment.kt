@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.CallSuper
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import com.gta.core.R
 import com.gta.core.util.showToast
 import com.gta.core.view.base.lce.DefaultLceImpl
@@ -16,7 +19,13 @@ import com.gta.core.view.base.lce.ILce
 import com.scwang.smart.refresh.layout.util.SmartUtil.dp2px
 
 
-abstract class BaseFragment : Fragment(), ILce, BaseFragmentInit {
+abstract class BaseFragment<T: ViewModel, V: ViewDataBinding> : Fragment(), ILce, BaseFragmentInit {
+    abstract val viewModel: T
+    abstract val layoutId: Int
+    lateinit var dataBinding: V
+    /**
+     * 加载数据的LiveData。
+     */
 
     /**
      * Fragment中由于服务器异常导致加载失败显示的布局。
@@ -49,32 +58,10 @@ abstract class BaseFragment : Fragment(), ILce, BaseFragmentInit {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        dataBinding = DataBindingUtil.inflate(LayoutInflater.from(context), layoutId, null, false)
+        dataBinding.lifecycleOwner = this
+        return dataBinding.root
         //这里是将原本的Fragment的ui和lce视图叠放在一起，所以用FrameLayout做基底
-        val frameLayout = FrameLayout(requireContext())
-        val lce = View.inflate(context, R.layout.layout_lce, null)
-        val params = FrameLayout.LayoutParams(
-            FrameLayout.LayoutParams.MATCH_PARENT,
-            FrameLayout.LayoutParams.MATCH_PARENT
-        )
-        val isPort = resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
-        params.setMargins(
-            0,
-            if (isHaveHeadMargin()) {
-                dp2px(if (isPort) 70f else 55f)
-            } else 0,
-            0,
-            0
-        )
-        lce.layoutParams = params
-        //这个是原本的Fragment的ui
-        val content = getLayoutView(inflater, container, false)
-        //这和Activity的实现有不同,Activity可以直接调用AppCompatActivity的addContentView()
-        frameLayout.addView(content)
-        //将lce视图叠放在原本的视图上面
-        frameLayout.addView(lce)
-        //两段逻辑分开，方便看
-        onCreateView(lce)
-        return frameLayout
     }
     /**
      * 在Fragment基类中获取通用的控件，会将传入的View实例原封不动返回。

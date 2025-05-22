@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/media_source_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <tech.jidouauto.component.widgets.basic.ImageView
+            android:id="@+id/media_source_icon"
+            android:layout_width="@dimen/media_source_bar_icon_size"
+            android:layout_height="@dimen/media_source_bar_icon_size"
+            android:layout_marginVertical="@dimen/media_source_bar_margin_Vertical"
+            android:layout_marginStart="@dimen/media_source_bar_margin_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/media3_icon_block" />
+
+        <tech.jidouauto.component.widgets.basic.TextView
+            android:id="@+id/media_source_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/media_source_bar_margin_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/media_source_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/MediaSourceBar_title_text" />
+
+        <tech.jidouauto.component.widgets.basic.ImageView
+            android:id="@+id/media_source_right_button"
+            android:layout_width="@dimen/media_source_bar_arrow_down_width"
+            android:layout_height="@dimen/media_source_bar_arrow_down_height"
+            android:layout_marginHorizontal="@dimen/media_source_bar_margin_horizontal"
+            android:src="@drawable/ic_arrow_down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/media_source_title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

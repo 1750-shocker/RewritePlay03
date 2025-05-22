@@ -9,7 +9,8 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
-
+jdoHmiSDK = "main.2025.105"
+navigation = "2.8.8"
 room = "2.6.1"
 kotlin-coroutines = "1.7.3"
 ksp = "2.0.21-1.0.28"
@@ -38,6 +39,7 @@ webkit = "1.13.0"
 banner = "2.2.2"
 
 flexbox = "3.0.0"
+databindingRuntime = "8.8.0"
 
 
 [libraries]
@@ -90,6 +92,16 @@ androidx-webkit = { group = "androidx.webkit", name = "webkit", version.ref = "w
 youth-banner = { group = "io.github.youth5201314", name = "banner", version.ref = "banner" }
 
 google-flexbox = { group = "com.google.android.flexbox", name = "flexbox", version.ref = "flexbox" }
+androidx-databinding-runtime = { group = "androidx.databinding", name = "databinding-runtime", version.ref = "databindingRuntime" }
+
+androidx-navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "navigation" }
+androidx-navigation-dynamic-features-fragment = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigation" }
+androidx-navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigation" }
+androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navigation" }
+
+jdo-hmi-widget = { module = "tech.jidouauto:component-hmi-widget", version.ref = "jdoHmiSDK" }
+jdo-hmi-res = { module = "tech.jidouauto:component-hmi-res", version.ref = "jdoHmiSDK" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
