@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 
-abstract class BaseViewModel<BaseData, Data, Key> : ViewModel() {
+abstract class BaseAndroidViewModel<BaseData, Data, Key> : ViewModel() {
 
     //数据保持（列表数据）
     val dataList = ArrayList<Data>()

@@ -41,12 +41,16 @@ android {
 }
 
 dependencies {
+    api(libs.refresh.layout.kernel)      // 核心必须依赖
+    api(libs.refresh.header.classics)    // 经典刷新头
+    api(libs.refresh.footer.classics)   // 经典加载
     implementation(project(":model"))
     implementation(project(":core"))
     implementation(project(":network"))
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
     ksp(libs.hilt.compiler)
+    implementation(libs.fragment.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
