@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.core.content.withStyledAttributes
@@ -12,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.gta.core.R
 import com.gta.core.databinding.LayoutMediaSourceBarBinding
 
-class MediaSourceBar(
+class MediaSourceBar @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = R.attr.mediaSourceBarStyle,
@@ -27,17 +28,6 @@ class MediaSourceBar(
     private var mIcon: Drawable? = null//图标
     private var mTitleTextSize: Float? = null
 
-    constructor(context: Context) : this(context, null)
-
-    constructor(context: Context, attrs: AttributeSet) : this(context, attrs,  0)
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : this(
-        context,
-        attrs,
-        defStyleAttr,
-        0
-    )
-
     init {
         initAttrs(context, attrs, defStyleAttr, R.attr.mediaSourceBarStyle)
         mBackgroundColor?.let { binding.mediaSourceBar.setBackgroundColor(it) }
@@ -45,6 +35,7 @@ class MediaSourceBar(
         mTitleTextColor?.let { binding.mediaSourceTitle.setTextColor(it) }
         mIcon?.let { binding.mediaSourceIcon.setImageDrawable(it) }
         mTitleText?.let { binding.mediaSourceTitle.text = it }
+        binding.root.isClickable = true
         addView(binding.root)
     }
 
@@ -74,6 +65,7 @@ class MediaSourceBar(
 
 
     override fun setOnClickListener(listener: OnClickListener?) {
+        Log.d("wzhh", "setOnClickListener: 执行到mediaSourceBar内部方法")
         binding.root.setOnClickListener(listener)
     }
 

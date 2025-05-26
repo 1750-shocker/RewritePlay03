@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B151F"
+    android:clickable="true"
+    android:focusable="true">
+
+    <com.gta.core.view.custom.mc.MediaSourceBar
+        android:id="@+id/mediaSourceBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:media_source_backgroundColor="#5FF24A4A"
+        app:media_source_icon="@drawable/baseline_business_center_24"
+        app:media_source_name_color="@color/white"
+        app:media_source_name="网易云音乐"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mediaSourceBar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

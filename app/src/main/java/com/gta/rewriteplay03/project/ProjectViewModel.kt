@@ -10,16 +10,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProjectViewModel @Inject constructor(
     private val projectRepository: ProjectRepository
-) : BaseViewModel<List<ProjectClassify>, Unit, Boolean>() {
+) : BaseViewModel() {
 
-    var position = 0
-
-    override fun getData(page: Boolean): LiveData<Result<List<ProjectClassify>>> {
-        return projectRepository.getProjectTree(page)
-    }
-
-    init {
-        getDataList(false)
-    }
 
 }

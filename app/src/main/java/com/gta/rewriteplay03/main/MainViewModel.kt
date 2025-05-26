@@ -2,17 +2,12 @@ package com.gta.rewriteplay03.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.gta.core.view.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor() : BaseViewModel() {
 
-    private val pageLiveData = MutableLiveData<Int>()
-
-    fun setPage(page: Int) {
-        pageLiveData.value = page
-    }
-
-    fun getPage():Int? {
-        return pageLiveData.value
-    }
 
 }

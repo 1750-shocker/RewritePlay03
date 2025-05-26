@@ -1,24 +1,20 @@
-package com.gta.core.view.base
+package com.gta.rewriteplay03.mediaActivity
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
+import com.gta.rewriteplay03.R
+import dagger.hilt.android.AndroidEntryPoint
 
-abstract class BaseActivity<T: BaseViewModel, V: ViewDataBinding>: AppCompatActivity() {
-    abstract val viewModel: T
-    abstract val layoutId: Int
-    lateinit var dataBinding: V
-
+@AndroidEntryPoint
+class MediaActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        dataBinding = DataBindingUtil.setContentView(this, layoutId)
-        dataBinding.lifecycleOwner = this
-        ViewCompat.setOnApplyWindowInsetsListener(dataBinding.root) { v, insets ->
+        setContentView(R.layout.activity_media2)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets

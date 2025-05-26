@@ -18,52 +18,13 @@ open class ProjectListFragment: BaseFragment<ProjectListViewModel, FragmentProje
     private lateinit var articleAdapter: ArticleAdapter
     private var page = 1
     private var projectCid: Int? = null
-    override fun getLayoutView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        attachToRoot: Boolean
-    ): View {
-        return dataBinding.root
-    }
 
-    override fun initData() {
-//        setDataStatus(viewModel.dataLiveData, {
-//            if (viewModel.dataList.size > 0) loadFinished()
-//        }) {
-//            if (page == 1 && viewModel.dataList.size > 0) {
-//                viewModel.dataList.clear()
-//            }
-//            viewModel.dataList.addAll(it)
-//            articleAdapter.notifyItemInserted(it.size)
-//        }
-//        getArticleList(false)
-    }
-
-    override fun initView() {
-//        articleAdapter = ArticleAdapter(requireContext(), viewModel.dataList)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        refreshData()
-    }
-    private fun refreshData(){
-        getArticleList(true)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             projectCid = it.getInt(PROJECT_CID)
         }
-    }
-    private fun getArticleList(isRefresh: Boolean) {
-//        if (viewModel.dataList.size <= 0) {
-//            startLoading()
-//            projectCid?.apply {
-//                viewModel.getDataList(QueryArticle(page, this, isRefresh))
-//            }
-//        }
     }
 
     companion object {
