@@ -25,15 +25,26 @@
             app:media_source_icon="@{serviceInfo.icon}"
             app:media_source_name="@{serviceInfo.name}" />
 
-        <tech.jidouauto.component.widgets.tab.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/main_tab"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="#03A9F4"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="#EBEBEB"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="5dp"
+            app:tabMaxWidth="0dp"
+            app:tabMode="scrollable"
+            app:tabSelectedTextAppearance="@style/TabLayoutTextStyle"
+            app:tabSelectedTextColor="#FF5722"
+            app:tabTextColor="#EBEBEB"
             app:layout_constraintStart_toEndOf="@id/media_source_bar"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/main_tab"
