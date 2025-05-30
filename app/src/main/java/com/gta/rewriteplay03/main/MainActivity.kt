@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.gta.core.util.showToast
 import com.gta.core.view.base.BaseActivity
+import com.gta.core.view.custom.LoginDialogFragment
 import com.gta.rewriteplay03.R
 import com.gta.rewriteplay03.databinding.ActivityMainBinding
 import com.gta.rewriteplay03.mediaActivity.MediaActivity
@@ -26,11 +27,15 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     private var exitTime: Long = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        dataBinding.button.setOnClickListener{
+        dataBinding.button.setOnClickListener {
             Toast.makeText(this, "123", Toast.LENGTH_SHORT).show()
             MediaActivity.actionStart(this)
         }
+        dataBinding.userHead.setOnClickListener {
+            LoginDialogFragment().showDialog(this)
+        }
     }
+
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             exit()

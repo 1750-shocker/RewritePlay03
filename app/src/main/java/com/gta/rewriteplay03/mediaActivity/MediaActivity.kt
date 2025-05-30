@@ -3,24 +3,18 @@ package com.gta.rewriteplay03.mediaActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
-import com.gta.core.util.getStatusBarHeight
 import com.gta.core.view.base.BaseActivity
 import com.gta.core.view.custom.FragmentAdapter
+import com.gta.core.view.custom.LoginDialogFragment
 import com.gta.core.view.custom.MediaSourceDialog
 import com.gta.model.model.ServiceBean
 import com.gta.rewriteplay03.R
 import com.gta.rewriteplay03.databinding.ActivityMediaBinding
-import com.gta.rewriteplay03.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
-import tech.jidouauto.component.widgets.tab.TabLayout
-import tech.jidouauto.library.logger.Logger
 
 @AndroidEntryPoint
 class MediaActivity : BaseActivity<MediaViewModel, ActivityMediaBinding>(),
@@ -37,7 +31,7 @@ class MediaActivity : BaseActivity<MediaViewModel, ActivityMediaBinding>(),
             ContextCompat.getDrawable(this@MediaActivity, R.drawable.ic_project)
         )
         dataBinding.mediaSourceBar.setOnClickListener {
-            MediaSourceDialog(this).show()
+            MediaSourceDialog(this).showDialog(this)
         }
         adapter = FragmentAdapter(supportFragmentManager, lifecycle)
         dataBinding.apply {

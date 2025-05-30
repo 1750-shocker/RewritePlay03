@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.GridLayoutManager
 import com.gta.core.view.base.BaseFragment
 import com.gta.model.pojo.QueryArticle
 import com.gta.rewriteplay03.R
+import com.gta.rewriteplay03.article.ArticleAdapter
 import com.gta.rewriteplay03.databinding.TemplateFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +30,9 @@ class TemplateFragment private constructor() :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO:初始化adapter，给它传数据源viewModel.dataList
+        val adapter = ArticleAdapter(requireContext(), viewModel.dataList)
+        dataBinding.recyclerview.adapter = adapter
+        dataBinding.recyclerview.layoutManager = GridLayoutManager(context,4)
         setDataStatus(viewModel.dataLiveData){
             //数据请求正常后进行填充
             if (page == 1 && viewModel.dataList.size > 0) {
@@ -37,8 +40,7 @@ class TemplateFragment private constructor() :
             }
             viewModel.dataList.addAll(it)
             Toast.makeText(context, "数据填充成功", Toast.LENGTH_SHORT).show()
-            //TODO：填充完通知更新视图
-//            articleAdapter.notifyItemInserted(it.size)
+            adapter.notifyItemInserted(it.size)
         }
     }
 

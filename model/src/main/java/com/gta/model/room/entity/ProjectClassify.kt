@@ -16,3 +16,17 @@ data class ProjectClassify(
     @ColumnInfo(name = "user_control_set_top") val userControlSetTop: Boolean,
     @ColumnInfo(name = "visible") val visible: Int
 )
+// 历史记录 localType
+const val HISTORY = 10
+
+// 首页置顶 localType
+const val HOME_TOP = 20
+
+// 首页 localType
+const val HOME = 30
+
+// 项目 localType
+const val PROJECT = 40
+
+// 公众号 localType
+const val OFFICIAL = 50

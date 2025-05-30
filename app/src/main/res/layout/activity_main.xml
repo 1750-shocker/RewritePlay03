@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -12,10 +13,22 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button"
-            android:layout_margin="@dimen/dp_20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="去mediaActivity"/>
+            android:layout_margin="@dimen/dp_20"
+            android:text="去mediaActivity" />
+
+        <com.gta.core.view.custom.UserInfoBar
+            android:id="@+id/user_head"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            app:user_head_icon="@drawable/baseline_business_center_24" />
+
+        <tech.jidouauto.component.widgets.SimpleMediaView
+            android:id="@+id/play_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </layout>

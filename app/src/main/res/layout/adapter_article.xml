@@ -1,13 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/article_list_bg"
+        android:padding="11dp">
+
+        <ImageView
+            android:id="@+id/article_image"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:maxHeight="@dimen/dp_80"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <tech.jidouauto.component.widgets.basic.TextView
+            android:id="@+id/article_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="标题很长"
+            android:textColor="@color/red_btn_bg_color"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/article_image" />
+
+        <tech.jidouauto.component.widgets.basic.TextView
+            android:id="@+id/article_author"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="作者名字"
+            android:textColor="@color/red_btn_bg_color"
+            android:textSize="@dimen/sp_13"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/article_time"/>
+
+        <tech.jidouauto.component.widgets.basic.TextView
+            android:id="@+id/article_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/red_btn_bg_color"
+            android:textSize="@dimen/sp_13"
+            android:text="2021/4/22"
+            app:layout_constraintStart_toEndOf="@id/article_author"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

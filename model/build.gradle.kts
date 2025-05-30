@@ -37,7 +37,6 @@ dependencies {
     api(libs.room.runtime)
     ksp(libs.room.compiler)
     api(libs.room.ktx)
-    implementation(project(":core"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

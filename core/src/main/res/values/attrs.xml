@@ -28,4 +28,11 @@
         <attr name="media_source_name_size" format="reference|dimension" />
     </declare-styleable>
 
+    <declare-styleable name="UserInfoBar">
+        <attr name="user_name_color" format="reference"/>
+        <attr name="user_name_size" format="dimension"/>
+        <attr name="user_vip_icon" format="reference|color"/>
+        <attr name="user_head_icon" format="reference|color"/>
+    </declare-styleable>
+
 </resources>

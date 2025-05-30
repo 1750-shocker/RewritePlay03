@@ -6,6 +6,28 @@
     <dimen name="media_source_bar_arrow_down_width">10dp</dimen>
     <dimen name="media_source_bar_arrow_down_height">5dp</dimen>
     <dimen name="lce_content_view_animation_translate_y">40dp</dimen>
+
+
+    <dimen name="list_view_content_margin">24dp</dimen>
+    <dimen name="list_item_title_common_margin">24dp</dimen>
+    <dimen name="list_item_category_icon_size">48dp</dimen>
+    <dimen name="list_banner_item_height">432dp</dimen>
+    <dimen name="list_banner_item_info_margin_bottom">20dp</dimen>
+    <dimen name="list_grid_item_space">24dp</dimen>
+    <dimen name="list_grid_item_cover_height">317dp</dimen>
+    <dimen name="list_grid_item_title_margin_top">24dp</dimen>
+
+    <dimen name="dialog_login_content_width">960dp</dimen>
+    <dimen name="dialog_login_content_height">628dp</dimen>
+    <dimen name="dialog_login_qrcode_size">300dp</dimen>
+    <dimen name="dialog_login_qrcode_padding">18dp</dimen>
+    <dimen name="dialog_user_content_width">640dp</dimen>
+    <dimen name="dialog_user_content_height">582dp</dimen>
+    <dimen name="dialog_user_name_margin_top">16dp</dimen>
+    <dimen name="dialog_user_avatar_size">160dp</dimen>
+    <dimen name="dialog_titleline_height">126dp</dimen>
+    <dimen name="dialog_titleline_back_btn_margin_start">64dp</dimen>
+
     <!-- dp and sp values, must be defind in this file! -->
     <!-- view size,you can add if there is no one -->
     <dimen name="dp_m_60">-60dp</dimen>
