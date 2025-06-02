@@ -8,6 +8,10 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
+import com.gta.core.Play
+import com.gta.core.util.checkNetworkAvailable
+import com.gta.core.util.showToast
 import com.gta.core.view.base.BaseRecyclerAdapter
 import com.gta.model.room.entity.Article
 import com.gta.rewriteplay03.databinding.AdapterArticleBinding
@@ -19,6 +23,13 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.compareTo
+import com.gta.rewriteplay03.article.collect.CollectRepository
+import com.gta.model.room.PlayDatabase
+import com.gta.rewriteplay03.R
+import com.gta.rewriteplay03.article.collect.CollectRepositoryPoint
+import com.gta.core.util.getHtmlText
+import com.gta.core.util.setSafeListener
+import com.gta.model.room.entity.HISTORY
 
 class ArticleAdapter(
     private val mContext: Context,
@@ -122,7 +133,7 @@ class ArticleAdapter(
                     mContext.showToast(mContext.getString(R.string.no_network))
                     return@setOnClickListener
                 }
-                ArticleActivity.actionStart(mContext, data)
+//                TODO:ArticleActivity.actionStart(mContext, data)
                 val browseHistoryDao = PlayDatabase.getDatabase(mContext).browseHistoryDao()
                 launch(Dispatchers.IO) {
                     if (browseHistoryDao.getArticle(data.id, HISTORY) == null) {
