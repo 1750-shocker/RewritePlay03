@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".article.ArticleActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:minHeight="@dimen/dp_70"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/articleImgBack"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="@color/white"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingBottom="@dimen/dp_8"
+            android:src="@drawable/img_back"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/articleTxtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="@dimen/dp_45"
+            android:gravity="center"
+            android:lines="1"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_18"
+            tools:text="玩安卓" />
+
+        <ImageView
+            android:id="@+id/articleImgRight"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_gravity="center_vertical|end"
+            android:backgroundTint="@color/white"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingBottom="@dimen/dp_8"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            tools:ignore="ContentDescription" />
+
+    </FrameLayout>
+
+    <com.gta.rewriteplay03.article.X5WebView
+        android:id="@+id/articleWebView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
