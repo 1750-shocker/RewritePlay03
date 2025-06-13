@@ -6,12 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.tabs.TabLayoutMediator
 import com.gta.core.util.getStatusBarHeight
 import com.gta.core.view.custom.FragmentAdapter
 import com.gta.rewriteplay03.databinding.FragmentProjectBinding
 import com.gta.rewriteplay03.project.list.ProjectListFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -46,7 +51,7 @@ class ProjectFragment : BaseTabFragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun initData() {
         startLoading()
-        setDataStatus(viewModel.dataLiveData) {
+        setDataStatusFlow(viewModel.dataFlow) {
             val nameList = mutableListOf<String>()
             val viewList = mutableListOf<Fragment>()
             it.forEach { project ->

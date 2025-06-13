@@ -8,12 +8,18 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.gta.core.R
 import com.gta.core.util.showToast
 import com.gta.core.view.base.lce.DefaultLceImpl
 import com.gta.core.view.base.lce.ILce
 import com.scwang.smart.refresh.layout.util.SmartUtil.dp2px
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 
 
 abstract class BaseFragment : Fragment(), ILce, BaseFragmentInit {
@@ -113,27 +119,29 @@ abstract class BaseFragment : Fragment(), ILce, BaseFragmentInit {
         initData()
     }
 
-    //和activity那里一样，多一个网络失败的主动处理
-    fun <T> setDataStatus(
-        dataLiveData: LiveData<Result<T>>,
+    fun <T> setDataStatusFlow(
+        flow: Flow<Result<T>>,
         onBadNetwork: () -> Unit = {},
-        onDataStatus: (T) -> Unit
+        onDataStatus: (T) -> Unit,
     ) {
-        dataLiveData.observe(this) {
-            if (it.isSuccess) {
-                val dataList = it.getOrNull()
-                if (dataList != null) {
-                    loadFinished()
-                    onDataStatus(dataList)
+        viewLifecycleOwner.lifecycleScope.launch {
+            flow.collect { result ->
+                if (result.isSuccess) {
+                    val data = result.getOrNull()
+                    if (data != null) {
+                        loadFinished()
+                        onDataStatus(data)
+                    } else {
+                        showLoadErrorView()
+                    }
                 } else {
-                    showLoadErrorView()
+                    context?.showToast(getString(R.string.bad_network_view_tip))
+                    showBadNetworkView { initData() }
+                    //比activity多一个网络问题的处理逻辑，并且是自动触发的
+                    onBadNetwork.invoke()
                 }
-            } else {
-                context?.showToast(getString(R.string.bad_network_view_tip))
-                showBadNetworkView { initData() }
-                //比activity多一个网络问题的处理逻辑，并且是自动触发的
-                onBadNetwork.invoke()
             }
+
         }
     }
 

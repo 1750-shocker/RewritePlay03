@@ -41,13 +41,13 @@ class ProjectListFragment : BaseListFragment() {
         if (viewModel.dataList.size <= 0) {
             startLoading()
             projectCid?.apply {
-                viewModel.getDataList(QueryArticle(page, this, isRefresh))
+                viewModel.requestData(QueryArticle(page, this, isRefresh))
             }
         }
     }
 
     override fun initData() {
-        setDataStatus(viewModel.dataLiveData, {
+        setDataStatusFlow(viewModel.dataFlow, {
             if (viewModel.dataList.isNotEmpty()) loadFinished()
         }) {
             if (page == 1 && viewModel.dataList.isNotEmpty()) {

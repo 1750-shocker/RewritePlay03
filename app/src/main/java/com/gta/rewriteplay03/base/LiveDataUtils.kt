@@ -3,6 +3,8 @@ package com.gta.rewriteplay03.base
 import android.util.Log
 import androidx.lifecycle.liveData
 import com.gta.model.model.BaseModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 
 private const val TAG = "LiveDataUtils"
@@ -34,6 +36,17 @@ fun <T> liveDataFire(block: suspend () -> Result<T>) =
             block()
         } catch (e: Exception) {
             Log.e(TAG, "fire $e")
+            Result.failure(e)
+        }
+        emit(result)
+    }
+
+fun <T> flowDataFire(block: suspend() -> Result<T>): Flow<Result<T>> =
+    flow{
+        val result = try {
+            block()
+        } catch (e: Exception) {
+            Log.e(TAG, "flowDataFire $e")
             Result.failure(e)
         }
         emit(result)

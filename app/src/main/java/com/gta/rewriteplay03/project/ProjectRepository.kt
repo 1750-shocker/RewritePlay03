@@ -5,10 +5,14 @@ import com.gta.core.util.DataStoreUtils
 import com.gta.model.pojo.QueryArticle
 import com.gta.model.room.PlayDatabase
 import com.gta.model.room.entity.PROJECT
+import com.gta.model.room.entity.ProjectClassify
 import com.gta.network.base.PlayAndroidNetwork
+import com.gta.rewriteplay03.base.flowDataFire
 import com.gta.rewriteplay03.base.liveDataFire
 import dagger.hilt.android.scopes.ActivityRetainedScoped
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 
@@ -18,21 +22,24 @@ class ProjectRepository @Inject constructor(private val application: Application
     private val projectClassifyDao = PlayDatabase.getDatabase(application).projectClassifyDao()
     private val articleListDao = PlayDatabase.getDatabase(application).browseHistoryDao()
 
+
     /**
-     * 获取项目标题列表
+     * flow写法，抛弃livedata
      */
-    fun getProjectTree(isRefresh: Boolean) = liveDataFire {
-        val projectClassifyLists = projectClassifyDao.getAllProject()
-        if (projectClassifyLists.isNotEmpty() && !isRefresh) {
-            Result.success(projectClassifyLists)
-        } else {
+    fun getProjectTreeFlow(isRefresh: Boolean):Flow<Result<List<ProjectClassify>>> = flowDataFire{
+        val cached = projectClassifyDao.getAllProject()
+        if(cached.isNotEmpty() && !isRefresh){
+            Result.success(cached)
+        }else{
             val projectTree = PlayAndroidNetwork.getProjectTree()
-            if (projectTree.errorCode == 0) {
+            if(projectTree.errorCode == 0){
                 val projectList = projectTree.data
                 projectClassifyDao.insertList(projectList)
                 Result.success(projectList)
-            } else {
-                Result.failure(RuntimeException("response status is ${projectTree.errorCode}  msg is ${projectTree.errorMsg}"))
+            }else{
+                Result.failure(
+                    RuntimeException("response status is ${projectTree.errorCode} msg is ${projectTree.errorMsg}")
+                )
             }
         }
     }
@@ -41,7 +48,7 @@ class ProjectRepository @Inject constructor(private val application: Application
      * 获取项目具体文章列表
      * @param query 查询类
      */
-    fun getProject(query: QueryArticle) = liveDataFire {
+    fun getProject(query: QueryArticle) = flowDataFire {
         if (query.page == 1) {
             val dataStore = DataStoreUtils
             val articleListForChapterId =
